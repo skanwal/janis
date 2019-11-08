@@ -2,9 +2,11 @@ from janis_core import (
     ToolInput,
     ToolOutput,
     Directory,
+    File,
     CommandTool,
     Stdout,
 )
+from janis_core import *
 
 
 class RunFolderCheck(CommandTool):
@@ -30,11 +32,17 @@ class RunFolderCheck(CommandTool):
         ]
 
     def outputs(self):
-        return [ToolOutput("out", Stdout)]
+        return [
+            ToolOutput(
+                "out",
+                File,
+                glob=WildcardSelector("*"),
+                )
+            ]
 
     @staticmethod
     def container():
-        return "umccr/pipeline-cwl"
+        return "umccr/pipeline"
 
     @staticmethod
     def version():
