@@ -1,15 +1,14 @@
 from janis_core import *
 
 class SampleSheetCheck(CommandTool):
-    @staticmethod
-    def tool():
+
+    def tool(self):
         return "sampelSheetCheck"
 
     def env_vars(self):
         return {"DEPLOY_ENV": "prod"}
 
-    @staticmethod
-    def base_command():
+    def base_command(self):
         return ["python", "/scripts/samplesheet-check.py"]
 
     def inputs(self):
@@ -39,12 +38,10 @@ class SampleSheetCheck(CommandTool):
                 )
             ]
 
-    @staticmethod
-    def container():
+    def container(self):
         return "umccr/pipeline"
 
-    @staticmethod
-    def version():
+    def version(self):
         return "v1"
 
 if __name__ == "__main__":

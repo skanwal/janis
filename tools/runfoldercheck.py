@@ -1,24 +1,13 @@
-from janis_core import (
-    ToolInput,
-    ToolOutput,
-    Directory,
-    File,
-    CommandTool,
-    Stdout,
-)
 from janis_core import *
 
-
 class RunFolderCheck(CommandTool):
-    @staticmethod
-    def tool():
+    def tool(self):
         return "runFolderCheck"
 
     def env_vars(self):
         return {"DEPLOY_ENV": "prod"}
 
-    @staticmethod
-    def base_command():
+    def base_command(self):
         return ["bash", "/scripts/runfolder-check.sh"]
 
     def inputs(self):
@@ -40,12 +29,10 @@ class RunFolderCheck(CommandTool):
                 )
             ]
 
-    @staticmethod
-    def container():
+    def container(self):
         return "umccr/pipeline"
 
-    @staticmethod
-    def version():
+    def version(self):
         return "v1"
 
 if __name__ == "__main__":
